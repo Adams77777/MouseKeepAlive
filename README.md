@@ -90,7 +90,7 @@ java MouseKeepAlive
 2.  Wait 4 minutes.
 3.  Check whether the mouse has moved.
 4.  If the mouse has moved, continue monitoring.
-5.  Otherwise, perform 3--7 small random cursor movements.
+5.  Otherwise, perform 3--17 small random cursor movements.
 6.  Stop immediately if user activity is detected.
 
 ------------------------------------------------------------------------
