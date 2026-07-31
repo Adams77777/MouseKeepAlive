@@ -1,182 +1,154 @@
-MouseKeepAlive
+# MouseKeepAlive
 
-    A lightweight Java utility that prevents the mouse cursor from remaining idle by performing small random movements only after a period of user inactivity.
+> A lightweight Java utility that prevents the desktop from
+> locking due to > inactivity. After 4 minutes of inactivity,
+> it moves the mouse cursor to generate activity.
 
-Java
-Platform
-License
-Table of Contents
+![Java](https://img.shields.io/badge/Java-8%2B-blue)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%28X11%29%20%7C%20macOS-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-    Overview
+------------------------------------------------------------------------
 
-    Features
+## Table of Contents
 
-    Requirements
+-   [Overview](#overview)
+-   [Features](#features)
+-   [Requirements](#requirements)
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [How It Works](#how-it-works)
+-   [Configuration](#configuration)
+-   [Project Structure](#project-structure)
+-   [Platform Notes](#platform-notes)
+-   [Possible Improvements](#possible-improvements)
+-   [License](#license)
 
-    Installation
+------------------------------------------------------------------------
 
-    Usage
+## Overview
 
-    How It Works
+**MouseKeepAlive** is a simple Java application that continuously
+monitors mouse activity.
 
-    Configuration
+Every **4 minutes**, it checks whether the mouse cursor has moved:
 
-    Project Structure
+-   If the user has been active, nothing happens.
+-   If no movement is detected, the application performs a few small
+    random cursor movements.
+-   If the user touches the mouse during these movements, the
+    application immediately stops moving the cursor and returns to
+    monitoring mode.
 
-    Platform Notes
+The application is intended to run continuously in the background with
+minimal resource usage.
 
-    Possible Improvements
+------------------------------------------------------------------------
 
-    License
+## Features
 
-Overview
+-   Continuous background execution
+-   User inactivity detection
+-   Automatic random mouse movement after inactivity
+-   Immediate interruption when user activity is detected
+-   Lightweight implementation
+-   No external dependencies
+-   Uses only the Java Standard Library (`java.awt.Robot`)
 
-MouseKeepAlive is a simple Java application that continuously monitors mouse activity.
+------------------------------------------------------------------------
 
-Every 4 minutes, it checks whether the mouse cursor has moved:
+## Requirements
 
-    ✅ If the user has been active, nothing happens.
+-   Java 8 or newer
+-   Desktop graphical environment
+-   Permission to control the mouse cursor (depending on the operating
+    system)
 
-    ✅ If no movement is detected, the application performs a few small random cursor movements.
+------------------------------------------------------------------------
 
-    ✅ If the user touches the mouse during these movements, the application immediately stops moving the cursor and returns to monitoring mode.
+## Installation
 
-The application is intended to run continuously in the background with minimal resource usage.
-Features
-
-    Continuous background execution
-
-    User inactivity detection
-
-    Automatic random mouse movement after inactivity
-
-    Immediate interruption when user activity is detected
-
-    Lightweight implementation
-
-    No external dependencies
-
-    Uses only the Java Standard Library (java.awt.Robot)
-
-Requirements
-
-    Java 8 or newer
-
-    Desktop graphical environment
-
-    Permission to control the mouse cursor (depending on the operating system)
-
-Installation
-
-Clone the repository:
-
+``` bash
 git clone https://github.com/<your-username>/MouseKeepAlive.git
-
-Navigate to the project directory:
-
 cd MouseKeepAlive
-
-Compile the application:
-
 javac MouseKeepAlive.java
+```
 
-Usage
+------------------------------------------------------------------------
 
-Run the application:
+## Usage
 
+``` bash
 java MouseKeepAlive
+```
 
-The program starts monitoring immediately and continues running until it is manually terminated.
-How It Works
+------------------------------------------------------------------------
 
-Start
-   │
-   ▼
-Store current mouse position
-   │
-   ▼
-Wait 4 minutes
-   │
-   ▼
-Has the mouse moved?
-   │
- ┌─┴──────────────┐
- │                │
-Yes              No
- │                │
- ▼                ▼
-Update         Perform
-position       random moves
- │                │
- │        User moves mouse?
- │                │
- └───────┬────────┘
-         ▼
-Repeat
+## How It Works
 
-Configuration
+1.  Store the current mouse position.
+2.  Wait 4 minutes.
+3.  Check whether the mouse has moved.
+4.  If the mouse has moved, continue monitoring.
+5.  Otherwise, perform 3--7 small random cursor movements.
+6.  Stop immediately if user activity is detected.
 
-The application's behavior is controlled by two constants:
-Constant	Description	Default
-CHECK_INTERVAL	Time between activity checks	4 minutes
-MAX_OFFSET	Maximum random cursor movement	15 pixels
+------------------------------------------------------------------------
 
-Example:
+## Configuration
 
-private static final long CHECK_INTERVAL = 4 * 60 * 1000;
-private static final int MAX_OFFSET = 15;
+  Constant           Description                      Default
+  ------------------ -------------------------------- -----------
+  `CHECK_INTERVAL`   Time between activity checks     4 minutes
+  `MAX_OFFSET`       Maximum random cursor movement   15 pixels
 
-Project Structure
+------------------------------------------------------------------------
 
+## Project Structure
+
+``` text
 MouseKeepAlive/
-│
 ├── MouseKeepAlive.java
 ├── README.md
 └── LICENSE
+```
 
-Platform Notes
-Windows
+------------------------------------------------------------------------
+
+## Platform Notes
+
+### Windows
 
 Works without additional configuration in most cases.
-Linux
+
+### Linux
 
 Works correctly on most X11 desktop environments.
 
-Some Wayland environments intentionally block applications from generating synthetic mouse events.
-macOS
+Some Wayland environments intentionally block synthetic mouse events.
 
-The application may require Accessibility permission:
+### macOS
 
-System Settings → Privacy & Security → Accessibility
-Possible Improvements
+The application may require Accessibility permission.
 
-    System tray icon
+------------------------------------------------------------------------
 
-    Pause / Resume
+## Possible Improvements
 
-    Configurable inactivity timeout
+-   System tray icon
+-   Pause / Resume
+-   Configurable inactivity timeout
+-   Configurable movement distance
+-   Configuration file
+-   Logging
+-   Swing or JavaFX GUI
+-   Automatic startup with the operating system
+-   Multi-monitor support
 
-    Configurable movement distance
+------------------------------------------------------------------------
 
-    Configuration file
+## License
 
-    Logging
-
-    Swing or JavaFX GUI
-
-    Automatic startup with the operating system
-
-    Multi-monitor awareness
-
-    Randomized movement timing
-
-    Unit tests
-
-License
-
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 
 Feel free to use, modify, and distribute it.
-Author
-
-Created with Java using the standard java.awt.Robot API.
