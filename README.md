@@ -1,7 +1,7 @@
 # MouseKeepAlive
 
 > A lightweight Java utility that prevents the desktop from
-> locking due to > inactivity. After 4 minutes of inactivity,
+> locking due to inactivity. After 4 minutes of inactivity,
 > it moves the mouse cursor to generate activity.
 
 ![Java](https://img.shields.io/badge/Java-8%2B-blue)
