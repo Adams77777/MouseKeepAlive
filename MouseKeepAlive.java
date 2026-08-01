@@ -6,8 +6,7 @@ import java.util.Random;
 public class MouseKeepAlive {
 
     // Check interval: 4 minutes
-    //private static final long CHECK_INTERVAL = 4 * 60 * 1000;
-    private static final long CHECK_INTERVAL = 3000;
+    private static final long CHECK_INTERVAL = 4 * 60 * 1000;
 
     // Maximum cursor movement in pixels
     private static final int MAX_OFFSET = 15;
