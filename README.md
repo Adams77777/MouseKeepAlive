@@ -69,7 +69,7 @@ minimal resource usage.
 ## Installation
 
 ``` bash
-git clone https://github.com/<your-username>/MouseKeepAlive.git
+git clone https://github.com/Adams77777/MouseKeepAlive.git
 cd MouseKeepAlive
 javac MouseKeepAlive.java
 ```
